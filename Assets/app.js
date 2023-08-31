@@ -1,3 +1,4 @@
+import config from './config';
 const cityName = document.querySelector('.showweather h2');
 const temperature = document.querySelector('.showweather .temperature span');
 const wind = document.querySelector('.showweather .wind span');
@@ -6,7 +7,6 @@ const currentIconElement = document.querySelector('.showweather .current-icon');
 const forecastCards = document.querySelectorAll('.forecast-card');
 const searchButton = document.querySelector('.btn');
 const searchBox = document.getElementById('searchBox');
-const config = config.apiKey;
 const savedCitiesUl = document.getElementById('saved'); // Reference to saved cities UL
 
 // Load saved cities from local storage on page load
