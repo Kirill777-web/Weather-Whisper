@@ -6,6 +6,7 @@ const currentIconElement = document.querySelector('.showweather .current-icon');
 const forecastCards = document.querySelectorAll('.forecast-card');
 const searchBox = document.getElementById('searchBox');
 const savedCitiesUl = document.getElementById('saved');
+const API_KEY = '5122eef9a006566789213b6b0cc11329';
 
 // Load saved cities from local storage on page load
 const loadSavedCities = () => {
