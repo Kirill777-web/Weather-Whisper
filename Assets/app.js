@@ -1,33 +1,31 @@
-import config from './config';
 const cityName = document.querySelector('.showweather h2');
 const temperature = document.querySelector('.showweather .temperature span');
 const wind = document.querySelector('.showweather .wind span');
 const humidity = document.querySelector('.showweather .humidity span');
 const currentIconElement = document.querySelector('.showweather .current-icon');
 const forecastCards = document.querySelectorAll('.forecast-card');
-const searchButton = document.querySelector('.btn');
 const searchBox = document.getElementById('searchBox');
-const savedCitiesUl = document.getElementById('saved'); // Reference to saved cities UL
+const savedCitiesUl = document.getElementById('saved');
 
 // Load saved cities from local storage on page load
-function loadSavedCities() {
+const loadSavedCities = () => {
   const savedCities = JSON.parse(localStorage.getItem('cities')) || [];
   savedCities.forEach((city) => {
     appendCityToList(city);
   });
-}
+};
 
 // Save the city to local storage
-function saveCityToLocalStorage(city) {
+const saveCityToLocalStorage = (city) => {
   const savedCities = JSON.parse(localStorage.getItem('cities')) || [];
   if (!savedCities.includes(city)) {
     savedCities.push(city);
     localStorage.setItem('cities', JSON.stringify(savedCities));
   }
-}
+};
 
 // Append city to the saved list (only if not already in the list)
-function appendCityToList(city) {
+const appendCityToList = (city) => {
   const existingCities = Array.from(savedCitiesUl.children).map(
     (li) => li.textContent
   );
@@ -36,11 +34,11 @@ function appendCityToList(city) {
     li.textContent = city;
     savedCitiesUl.appendChild(li);
   }
-}
+};
 
-function fetchWeather(city) {
+const fetchWeather = (city) => {
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${config.apiKey}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
   )
     .then((response) => {
       if (!response.ok) {
@@ -50,18 +48,18 @@ function fetchWeather(city) {
     })
     .then((data) => displayWeather(data))
     .catch((error) => console.error('There was an error!', error));
-}
+};
 
-function displayWeather(data) {
+const displayWeather = (data) => {
   cityName.textContent = data.name;
   temperature.textContent = (data.main.temp - 273.15).toFixed(2) + '°C';
   wind.textContent = data.wind.speed + ' km/h';
   humidity.textContent = data.main.humidity + '%';
   const iconCode = data.weather[0].icon;
   currentIconElement.src = `http://openweathermap.org/img/w/${iconCode}.png`;
-}
+};
 
-function populateForecast(data) {
+const populateForecast = (data) => {
   let currentDate = new Date();
 
   for (let i = 0; i < 5; i++) {
@@ -84,11 +82,11 @@ function populateForecast(data) {
     const iconCode = forecast.weather[0].icon;
     iconElement.src = `http://openweathermap.org/img/w/${iconCode}.png`;
   }
-}
+};
 
-function fetchForecast(city) {
+const fetchForecast = (city) => {
   fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${config.apiKey}`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}`
   )
     .then((response) => {
       if (!response.ok) {
@@ -98,14 +96,14 @@ function fetchForecast(city) {
     })
     .then((data) => populateForecast(data))
     .catch((error) => console.error('There was an error!', error));
-}
+};
 
-//Clicking the search button
-document.querySelector('.btn').addEventListener('click', function () {
+// Clicking the search button
+document.querySelector('.btn').addEventListener('click', () => {
   const city = searchBox.value;
 
   if (city) {
-    saveCityToLocalStorage(city); // Save the city
+    saveCityToLocalStorage(city);
     appendCityToList(city);
     fetchWeather(city);
     fetchForecast(city);
@@ -115,7 +113,7 @@ document.querySelector('.btn').addEventListener('click', function () {
 });
 
 // Clicking on a saved city to fetch its weather
-savedCitiesUl.addEventListener('click', function (e) {
+savedCitiesUl.addEventListener('click', (e) => {
   if (e.target.tagName === 'LI') {
     const city = e.target.textContent;
     fetchWeather(city);
