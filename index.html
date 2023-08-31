@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Weather Whisper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="Assets/icons8-weather-16.png">
+  <link rel="stylesheet" href="Assets/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Weather Whisper</h1>
+  </header>
+
+  <!-- This is current weather -->
+  <section class="showweather">
+    <div class="current-weather">
+      <h2>City Name</h2>
+      <img class="current-icon" src="" alt="Weather Icon">
+      <p class="temperature">Temperature: <span></span></p>
+      <p class="wind">Wind: <span></span></p>
+      <p class="humidity">Humidity: <span></span></p>
+    </div>
+  </section>
+
+  <div class="content-container">
+    <!-- City Search section -->
+    <section class="search-section">
+      <h2>Search for a City:</h2>
+      <div class="search-container">
+        <input type="text" id="searchBox">
+        <button class="btn">Search</button>
+      </div>
+      <!-- Saved output -->
+      <section class="savedresult">
+        <ul id="saved">
+
+        </ul>
+      </section>
+    </section>
+
+    <!-- 5 day forecast -->
+    <section class="forecast">
+      <h2>5-Day Forecast</h2>
+      <div class="forecast-container">
+
+        <!-- Repeat the below div for 5 times, one for each day -->
+        <div class="forecast-card">
+          <h3>Day</h3>
+          <img class="forecast-icon" src="" alt="Weather Icon">
+          <p class="temperature">Temperature: <span></span></p>
+          <p class="wind">Wind: <span></span></p>
+          <p class="humidity">Humidity: <span></span></p>
+        </div>
+        <div class="forecast-card">
+          <h3>Day</h3>
+          <img class="forecast-icon" src="" alt="Weather Icon">
+          <p class="temperature">Temperature: <span></span></p>
+          <p class="wind">Wind: <span></span></p>
+          <p class="humidity">Humidity: <span></span></p>
+        </div>
+        <div class="forecast-card">
+          <h3>Day</h3>
+          <img class="forecast-icon" src="" alt="Weather Icon">
+          <p class="temperature">Temperature: <span></span></p>
+          <p class="wind">Wind: <span></span></p>
+          <p class="humidity">Humidity: <span></span></p>
+        </div>
+        <div class="forecast-card">
+          <h3>Day</h3>
+          <img class="forecast-icon" src="" alt="Weather Icon">
+          <p class="temperature">Temperature: <span></span></p>
+          <p class="wind">Wind: <span></span></p>
+          <p class="humidity">Humidity: <span></span></p>
+        </div>
+        <div class="forecast-card">
+          <h3>Day</h3>
+          <img class="forecast-icon" src="" alt="Weather Icon">
+          <p class="temperature">Temperature: <span></span></p>
+          <p class="wind">Wind: <span></span></p>
+          <p class="humidity">Humidity: <span></span></p>
+        </div>
+      </div>
+  </div>
+  </section>
+  </div>
+
+  <script src="Assets/app.js"></script>
+</body>
+
+</html>
