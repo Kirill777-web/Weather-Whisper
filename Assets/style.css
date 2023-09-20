@@ -100,6 +100,10 @@ header {
   margin-bottom: 20px;
 }
 
+.current-weather {
+  text-align: center;
+}
+
 /* 5 day forecast style */
 .forecast {
   flex: 0.65;
